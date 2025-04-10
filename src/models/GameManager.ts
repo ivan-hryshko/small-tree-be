@@ -2,15 +2,15 @@ import { Game } from "./Game";
 
 export class GameManager {
 
-  private game: Game;
+  private game: Game | null = null;
 
-  constructor(game: Game) {
-    this.game = game || null;
+  constructor() {
   }
 
   createGame(): void {
     if (this.game) {
       console.log("Game already exists.");
+
       return;
     }
     this.game = new Game();
