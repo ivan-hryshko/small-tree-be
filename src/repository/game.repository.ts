@@ -1,4 +1,4 @@
-import {postgresSource} from '../config/app-data-source'
+import postgresSource from '../config/app-data-source'
 import {GameEntity} from '../entity/game.entity'
 
 export const GameRepository = postgresSource.getRepository(GameEntity).extend({

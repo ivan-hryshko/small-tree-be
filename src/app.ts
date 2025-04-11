@@ -1,7 +1,7 @@
 import express from 'express'
 import routes  from './routes/index'
 
-import { postgresSource } from './config/app-data-source'
+import postgresSource from './config/app-data-source'
 
 
 const app = express()
