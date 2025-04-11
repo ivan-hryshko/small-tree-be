@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:latest
+    env_file: postgres.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - dtrees
+
+networks:
+  dtrees:
+    name: dtrees_network
+
+volumes:
+  pgdata:
