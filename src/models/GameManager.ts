@@ -1,13 +1,12 @@
 import { Game } from "./Game";
 
 export class GameManager {
-
   private game: Game | null = null;
 
   constructor() {
   }
 
-  createGame(): void {
+  public createGame(): void {
     if (this.game) {
       console.log("Game already exists.");
 
