@@ -1,11 +1,5 @@
 import express from 'express'
 import routes  from './routes/index'
-import dotenv from 'dotenv'
-if (process.env.NODE_ENVIRONMENT === 'development') {
-  dotenv.config({ path: './dev.env' })
-} else {
-  // dotenv.config({ path: '.env.test' })
-}
 
 import { postgresSource } from './config/app-data-source'
 
