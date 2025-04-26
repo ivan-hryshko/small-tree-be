@@ -16,7 +16,7 @@ export const GamesRepository = appDataSource.getRepository(GameEntity).extend({
     const game = await this
     .createQueryBuilder('game')
     .leftJoinAndSelect('game.field', 'field')
-    .addSelect(['field.id'])
+    .addSelect('field')
     .where('game.id = :id', { id: query.id })
     .getOne();
     return game

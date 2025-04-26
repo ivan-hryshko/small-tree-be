@@ -12,6 +12,8 @@ export const FieldsRepository = appDataSource.getRepository(FieldEntity).extend(
   async createAndSave(params: FieldCrraeteparams): Promise<FieldEntity> {
     const field = new FieldEntity()
     field.game = params.game
+    field.height = 10
+    field.width = 20
     console.log('field :>> ', field);
     await this.save(field)
     return field

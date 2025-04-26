@@ -6,6 +6,12 @@ export class FieldEntity {
   @PrimaryGeneratedColumn()
   id: number
 
+  @Column({ type: 'integer', nullable: false, default: 20 })
+  width: number
+
+  @Column({ type: 'integer', nullable: false, default: 10 })
+  height: number
+
   @OneToOne(() => GameEntity, (game) => game.field)
   @JoinColumn()
   game: GameEntity
