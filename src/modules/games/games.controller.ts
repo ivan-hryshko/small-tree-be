@@ -1,6 +1,7 @@
-import { Game } from "../models/Game";
-import { GameManager } from "../models/GameManager";
-import { GameRepository } from "../repository/game.repository";
+import { Game } from "../../models/Game";
+import { GameManager } from "../../models/GameManager";
+import { GameRepository } from "../../repository/game.repository";
+import { GameService } from "./games.service";
 export class GameController {
 
   static createGame(req: any, res: any) {
@@ -13,5 +14,10 @@ export class GameController {
     const gameManger = new GameManager();
     gameManger.createGame();
     res.send("Game started!");
+  }
+  static preview(req: any, res: any) {
+    console.log('preview');
+    const preview = GameService.preview()
+    res.send(preview);
   }
 }

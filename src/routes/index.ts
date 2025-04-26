@@ -5,6 +5,6 @@ import gameRoutes from './game.route'
 const routes = Router()
 
 routes.use('/', baseRoutes)
-routes.use('/game', gameRoutes)
+routes.use('/games', gameRoutes)
 
 export default routes
