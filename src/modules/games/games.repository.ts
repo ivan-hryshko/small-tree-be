@@ -13,7 +13,7 @@ export const GamesRepository = appDataSource.getRepository(GameEntity).extend({
   },
 
   async getById(query: any): Promise<any> {
-    const game = await this.findBy({ id: 1})
+    const game = await this.findBy({ id: query.id })
     return game
   },
 })

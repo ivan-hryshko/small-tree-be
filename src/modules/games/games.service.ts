@@ -9,14 +9,14 @@ export class GameService {
     return game
   }
 
-  static async preview() {
+  static async preview({ id }: { id: string}) {
     // get game
     // get field
     // get trees
-    const game = await GamesRepository.getById({})
+    const game = await GamesRepository.getById({ id })
     console.log('game :>> ', game);
     return `[ ]</br>
     [ ]</br>
-     ${game}`
+     ${JSON.stringify(game)}`
   }
 }

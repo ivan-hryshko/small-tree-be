@@ -13,9 +13,10 @@ export class GameController {
     gameManger.createGame();
     res.send("Game started!");
   }
-  static preview(req: any, res: any) {
+  static async preview(req: any, res: any) {
+    const params = req.params
     console.log('preview');
-    const preview = GameService.preview()
+    const preview = await GameService.preview(params)
     res.send(preview);
   }
 }
