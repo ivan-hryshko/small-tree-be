@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne } from "typeorm"
+import { FieldEntity } from "../fields/fields.entity"
 
 @Entity({ name: "games" })
 export class GameEntity {
@@ -7,4 +8,7 @@ export class GameEntity {
 
   @Column()
   status: string
+
+  @OneToOne(() => FieldEntity, (field) => field.game)
+  field: FieldEntity;
 }

@@ -13,7 +13,12 @@ export const GamesRepository = appDataSource.getRepository(GameEntity).extend({
   },
 
   async getById(query: any): Promise<any> {
-    const game = await this.findBy({ id: query.id })
+    const game = await this
+    .createQueryBuilder('game')
+    .leftJoinAndSelect('game.field', 'field')
+    .addSelect(['field.id'])
+    .where('game.id = :id', { id: query.id })
+    .getOne();
     return game
   },
 })

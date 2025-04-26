@@ -1,7 +1,7 @@
 import { config } from "./config";
 import { DataSource } from "typeorm"
 import { GameEntity } from "../modules/games/game.entity";
-import { FieldEntity } from "../modules/fields/field.entity";
+import { FieldEntity } from "../modules/fields/fields.entity";
 console.log('config :>> ', config);
 
 const { PG_HOST, PG_PORT, PG_USERNAME, PG_PASSWORD, PG_DATABASE } = process.env;

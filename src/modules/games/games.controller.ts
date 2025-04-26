@@ -1,12 +1,14 @@
 import { Game } from "../../models/Game";
 import { GameManager } from "../../models/GameManager";
 import { GamesRepository } from "./games.repository";
+import { GameResponse } from "./games.response";
 import { GameService } from "./games.service";
 export class GameController {
 
   static async createGame(req: any, res: any) {
     const game = await GameService.craete()
-    res.send({ game });
+    const gameResponse = await GameResponse.getById(game)
+    res.send(gameResponse);
   }
   static startGame(req: any, res: any) {
     const gameManger = new GameManager();

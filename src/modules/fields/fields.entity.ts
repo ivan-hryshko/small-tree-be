@@ -6,7 +6,7 @@ export class FieldEntity {
   @PrimaryGeneratedColumn()
   id: number
 
-  @OneToOne(() => GameEntity)
+  @OneToOne(() => GameEntity, (game) => game.field)
   @JoinColumn()
   game: GameEntity
 }
