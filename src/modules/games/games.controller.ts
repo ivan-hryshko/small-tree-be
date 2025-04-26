@@ -1,14 +1,12 @@
 import { Game } from "../../models/Game";
 import { GameManager } from "../../models/GameManager";
-import { GameRepository } from "../../repository/game.repository";
+import { GamesRepository } from "./games.repository";
 import { GameService } from "./games.service";
 export class GameController {
 
-  static createGame(req: any, res: any) {
-    const gameManger = new GameManager();
-    gameManger.createGame();
-    GameRepository.createAndSave({ status: "not_started" });
-    res.send("Game created!");
+  static async createGame(req: any, res: any) {
+    const game = await GameService.craete()
+    res.send({ game });
   }
   static startGame(req: any, res: any) {
     const gameManger = new GameManager();

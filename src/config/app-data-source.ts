@@ -1,6 +1,6 @@
 import { config } from "./config";
 import { DataSource } from "typeorm"
-import { GameEntity } from "../entity/game.entity";
+import { GameEntity } from "../modules/games/game.entity";
 import { FieldEntity } from "../entity/field.entity";
 console.log('config :>> ', config);
 
