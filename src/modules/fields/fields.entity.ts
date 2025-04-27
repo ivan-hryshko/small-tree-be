@@ -15,4 +15,11 @@ export class FieldEntity {
   @OneToOne(() => GameEntity, (game) => game.field)
   @JoinColumn()
   game: GameEntity
+
+  get area(): number {
+    return this.width * this.height
+  }
+  getDescription(): string {
+    return `This is a field with height: ${this.height} and width: ${this.width}`;
+  }
 }
