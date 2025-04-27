@@ -4,6 +4,7 @@ import appDataSource from '../../config/app-data-source'
 import { FieldEntity } from './fields.entity'
 import { GameEntity } from '../games/game.entity'
 import { FieldCellService } from '../field-cells/field-cell.service'
+import { FieldCellEntity } from '../field-cells/field-cell.entity'
 
 type FieldCrraeteparams = {
   game: GameEntity
@@ -15,13 +16,19 @@ export const FieldsRepository = appDataSource.getRepository(FieldEntity).extend(
     field.game = params.game
     field.height = 10
     field.width = 20
+    field.fieldCells = []
     console.log('field :>> ', field);
-    await this.save(field)
     for (let y = 0; y < field.height; y++) {
       for (let x = 0; x < field.width; x++) {
-        const cell = await FieldCellService.create({ fieldId: field.id, x, y })
+        const cell = new FieldCellEntity();
+        cell.x = x;
+        cell.y = y;
+        cell.field = field;
+        field.fieldCells.push(cell);
+        // const cell = await FieldCellService.create({ fieldId: field.id, x, y })
       }
     }
+    await this.save(field)
     return field
   },
 

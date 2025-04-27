@@ -17,7 +17,7 @@ export class FieldEntity {
   @JoinColumn()
   game: GameEntity
 
-  @OneToMany(() => FieldCellEntity, (fieldCell) => fieldCell.field)
+  @OneToMany(() => FieldCellEntity, (fieldCell) => fieldCell.field, { cascade: true })
   fieldCells: FieldCellEntity[]
 
   get area(): number {
