@@ -1,5 +1,6 @@
 import { GamesRepository } from "./games.repository"
 import { FieldsRepository } from "../fields/fields.repository"
+import { FieldsService } from "../fields/fields.service"
 
 export class GameService {
   static async craete() {
@@ -8,7 +9,9 @@ export class GameService {
     // GameRepository.createAndSave({ status: "not_started" });
     // create field
     const game = await GamesRepository.createAndSave()
-    const field = await FieldsRepository.createAndSave({ game })
+
+    const field = await FieldsService.create({ game })
+    // await FieldsRepository.createAndSave({ game })
     return game
   }
 
