@@ -15,14 +15,25 @@ export class GameService {
     return game
   }
 
+  static prepareFieldPreview(height: number, width: number): string {
+    let result = ''
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        result = result + '[ ]'
+      }
+      result = result + '</br>'
+    }
+    return result
+  }
+
   static async preview({ id }: { id: string}) {
     // get game
     // get field
     // get trees
     const game = await GamesRepository.getById({ id })
     console.log('game :>> ', game);
-    return `[ ]</br>
-    [ ]</br>
+    const fieldPreview = this.prepareFieldPreview(game.field.height, game.field.width)
+    return `${fieldPreview}
      ${JSON.stringify(game)}`
   }
 }
