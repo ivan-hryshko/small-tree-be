@@ -3,6 +3,7 @@ import { FieldsRepository } from "../fields/fields.repository"
 import { FieldsService } from "../fields/fields.service"
 import appDataSource from "../../config/app-data-source"
 import { EntityManager } from "typeorm"
+import { TreesService } from "../trees/trees.service"
 
 export class GameService {
   static async craete() {
@@ -14,6 +15,7 @@ export class GameService {
       const game = await GamesRepository.createAndSave(manager)
 
       const field = await FieldsService.create({ manager, game })
+      const tree = await TreesService.create({ manager, game })
       // await FieldsRepository.createAndSave({ game })
       return game
     })
