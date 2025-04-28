@@ -3,6 +3,7 @@ import { DataSource } from "typeorm"
 import { GameEntity } from "../modules/games/game.entity";
 import { FieldEntity } from "../modules/fields/fields.entity";
 import { FieldCellEntity } from "../modules/field-cells/field-cell.entity";
+import { TreeEntity } from "../modules/trees/trees.entity";
 
 console.log('config :>> ', config);
 
@@ -12,6 +13,7 @@ const entities = [
   GameEntity,
   FieldEntity,
   FieldCellEntity,
+  TreeEntity,
 ]
 
 const appDataSource = new DataSource({
