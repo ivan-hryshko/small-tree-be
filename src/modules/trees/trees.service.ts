@@ -9,4 +9,16 @@ export class TreesService {
     const tree = await TreesRepository.createAndSave({ manager: params.manager, game: params.game })
     return
   }
+
+  static async createTreesWithCells(
+    manager: EntityManager,
+    game: GameEntity,
+    treeCount: number
+  ): Promise<void> {
+    const params = {
+      game,
+      treeCount,
+    }
+    const trees = await TreesRepository.createTreesWithCells(manager, params)
+  }
 }

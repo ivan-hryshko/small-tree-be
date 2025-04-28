@@ -7,15 +7,12 @@ import { TreesService } from "../trees/trees.service"
 
 export class GameService {
   static async craete() {
-        // const gameManger = new GameManager();
-    // gameManger.createGame();
-    // GameRepository.createAndSave({ status: "not_started" });
-    // create field
     return await appDataSource.transaction(async (manager: EntityManager) => {
       const game = await GamesRepository.createAndSave(manager)
 
       const field = await FieldsService.create({ manager, game })
-      const tree = await TreesService.create({ manager, game })
+      const treeCount = 3
+      const tree = await TreesService.createTreesWithCells(manager, game, treeCount)
       // await FieldsRepository.createAndSave({ game })
       return game
     })
