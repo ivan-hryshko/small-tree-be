@@ -1,4 +1,4 @@
-import { Brackets } from 'typeorm'
+import { EntityManager } from 'typeorm'
 
 import appDataSource from '../../config/app-data-source'
 import { FieldEntity } from './fields.entity'
@@ -6,12 +6,13 @@ import { GameEntity } from '../games/game.entity'
 import { FieldCellService } from '../field-cells/field-cell.service'
 import { FieldCellEntity } from '../field-cells/field-cell.entity'
 
-type FieldCrraeteparams = {
+type FieldCreateParams = {
   game: GameEntity
+  manager: EntityManager
 }
 
 export const FieldsRepository = appDataSource.getRepository(FieldEntity).extend({
-  async createAndSave(params: FieldCrraeteparams): Promise<FieldEntity> {
+  async createAndSave(params: FieldCreateParams): Promise<FieldEntity> {
     const field = new FieldEntity()
     field.game = params.game
     field.height = 10
@@ -28,7 +29,7 @@ export const FieldsRepository = appDataSource.getRepository(FieldEntity).extend(
         // const cell = await FieldCellService.create({ fieldId: field.id, x, y })
       }
     }
-    await this.save(field)
+    await params.manager.save(field)
     return field
   },
 

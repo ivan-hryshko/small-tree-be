@@ -1,14 +1,14 @@
-import { Brackets } from 'typeorm'
+import { EntityManager } from 'typeorm'
 
 import appDataSource from '../../config/app-data-source'
 import { GameEntity } from './game.entity'
 
 export const GamesRepository = appDataSource.getRepository(GameEntity).extend({
-  async createAndSave(): Promise<GameEntity> {
+  async createAndSave(manager: EntityManager): Promise<GameEntity> {
     const game = new GameEntity()
     game.status = 'not_started'
     console.log('game :>> ', game);
-    await this.save(game)
+    await manager.save(game)
     return game
   },
 

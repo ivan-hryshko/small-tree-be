@@ -1,6 +1,8 @@
 import { GamesRepository } from "./games.repository"
 import { FieldsRepository } from "../fields/fields.repository"
 import { FieldsService } from "../fields/fields.service"
+import appDataSource from "../../config/app-data-source"
+import { EntityManager } from "typeorm"
 
 export class GameService {
   static async craete() {
@@ -8,11 +10,13 @@ export class GameService {
     // gameManger.createGame();
     // GameRepository.createAndSave({ status: "not_started" });
     // create field
-    const game = await GamesRepository.createAndSave()
+    return await appDataSource.transaction(async (manager: EntityManager) => {
+      const game = await GamesRepository.createAndSave(manager)
 
-    const field = await FieldsService.create({ game })
-    // await FieldsRepository.createAndSave({ game })
-    return game
+      const field = await FieldsService.create({ manager, game })
+      // await FieldsRepository.createAndSave({ game })
+      return game
+    })
   }
 
   static prepareFieldPreview(height: number, width: number): string {
