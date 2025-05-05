@@ -4,6 +4,7 @@ import { GameEntity } from "../modules/games/game.entity";
 import { FieldEntity } from "../modules/fields/fields.entity";
 import { FieldCellEntity } from "../modules/field-cells/field-cell.entity";
 import { TreeEntity } from "../modules/trees/trees.entity";
+import { TreeCellEntity } from "../modules/tree-cells/tree-cell.entity";
 
 console.log('config :>> ', config);
 
@@ -14,6 +15,7 @@ const entities = [
   FieldEntity,
   FieldCellEntity,
   TreeEntity,
+  TreeCellEntity,
 ]
 
 const appDataSource = new DataSource({

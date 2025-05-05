@@ -11,7 +11,7 @@ export class GameService {
       const game = await GamesRepository.createAndSave(manager)
 
       const field = await FieldsService.create({ manager, game })
-      const treeCount = 3
+      const treeCount = 1
       const tree = await TreesService.createTreesWithCells(manager, game, treeCount)
       // await FieldsRepository.createAndSave({ game })
       return game

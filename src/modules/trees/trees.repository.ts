@@ -31,7 +31,7 @@ export const TreesRepository = appDataSource.getRepository(TreeEntity).extend({
     for (let i = 0; i < params.treeCount; i++) {
       const tree = new TreeEntity()
       tree.game = params.game
-      // tree.fieldCells = []
+      tree.treeCells = []
       trees.push(tree);
     }
 

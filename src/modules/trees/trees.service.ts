@@ -1,13 +1,14 @@
 import { EntityManager } from 'typeorm'
 import { GameEntity } from '../games/game.entity'
 import { TreesRepository } from './trees.repository'
+import { TreeEntity } from './trees.entity'
 
 export class TreesService {
-  static async create(params : { manager: EntityManager, game: GameEntity}) {
+  static async create(manager: EntityManager, params : {game: GameEntity}) {
     // check game exist
     // const game =
-    const tree = await TreesRepository.createAndSave({ manager: params.manager, game: params.game })
-    return
+    const tree = await TreesRepository.createAndSave({ manager, game: params.game })
+    return tree
   }
 
   static async createTreesWithCells(
@@ -19,6 +20,17 @@ export class TreesService {
       game,
       treeCount,
     }
-    const trees = await TreesRepository.createTreesWithCells(manager, params)
+
+    for (let i = 0; i < params.treeCount; i++) {
+      const tree = this.create(manager, { game })
+
+    }
+
+    // await manager.save(trees);
+    // const trees = await TreesRepository.createTreesWithCells(manager, params)
+  }
+
+  static async createTreeFirstCell(manager: EntityManager, params : {tree: TreeEntity}) {
+
   }
 }

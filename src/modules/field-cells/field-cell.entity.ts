@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToOne, Unique } from "typeorm"
 import { GameEntity } from "../games/game.entity"
 import { FieldEntity } from "../fields/fields.entity"
+import { TreeCellEntity } from "../tree-cells/tree-cell.entity"
 
 @Entity({ name: "field_cells" })
 @Unique(['field', 'x', 'y'])
@@ -17,4 +18,7 @@ export class FieldCellEntity {
   @ManyToOne(() => FieldEntity, (field) => field.fieldCells)
   @JoinColumn({ name: 'field_id' })
   field: FieldEntity
+
+  @OneToOne(() => TreeCellEntity, (treeCell) => treeCell.fieldCell)
+  treeCell: TreeCellEntity;
 }
