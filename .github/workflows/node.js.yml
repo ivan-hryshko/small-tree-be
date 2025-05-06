@@ -18,9 +18,9 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          POSTGRES_USER: testuser
-          POSTGRES_PASSWORD: testpass
-          POSTGRES_DB: testdb
+          POSTGRES_USER: ${{ secrets.PG_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.PG_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.PG_DATABASE }}
         ports:
           - 5432:5432
         options: >-
@@ -32,10 +32,10 @@ jobs:
     env:
       PG_HOST: localhost
       PG_PORT: 5432
-      PG_USERNAME: testuser
-      PG_PASSWORD: testpass
-      PG_DATABASE: testdb
-      NODE_ENVIRONMENT: test
+      PG_USERNAME: ${{ secrets.PG_USERNAME }}
+      PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
+      PG_DATABASE: ${{ secrets.PG_DATABASE }}
+      NODE_ENVIRONMENT: ${{ secrets.NODE_ENVIRONMENT }}
 
     strategy:
       matrix:
