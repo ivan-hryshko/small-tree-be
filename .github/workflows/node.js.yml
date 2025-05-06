@@ -30,12 +30,12 @@ jobs:
           --health-retries 5
 
     env:
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: testuser
-      DB_PASSWORD: testpass
-      DB_NAME: testdb
-      NODE_ENV: test
+      PG_HOST: localhost
+      PG_PORT: 5432
+      PG_USERNAME: testuser
+      PG_PASSWORD: testpass
+      PG_DATABASE: testdb
+      NODE_ENVIRONMENT: test
 
     strategy:
       matrix:
